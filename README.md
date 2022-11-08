@@ -13,7 +13,7 @@ Um pequeno hospital local busca desenvolver um novo sistema que atenda melhor à
 
 
 
-Part 2:
+# Part 2:
 
 No hospital, as internações têm sido registradas por meio de formulários eletrônicos que gravam os dados em arquivos. 
 
@@ -29,8 +29,11 @@ A internação, obviamente, é vinculada a um paciente – que pode se internar 
 
 
 
+# Solução:
 
 
+
+![Diagrama sem nome (1)](https://user-images.githubusercontent.com/110691979/200467739-2af7ed98-a8f6-4c88-bcff-67a41d549a3f.jpg)
 
 
 
