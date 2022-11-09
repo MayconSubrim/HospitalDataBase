@@ -163,6 +163,90 @@ create table if not exists Internação(
 
 
 
+Partee 3:
+
+Jogando nas regras que você criou: 
+Crie scripts de povoamento das tabelas desenvolvidas na atividade anterior
+Observe as seguintes atividades: 
+Inclua ao menos dez médicos de 
+
+Ao menos sete especialidades (considere a afirmação de que “entre as especialidades há pediatria, clínica geral, gastroenterologia e dermatologia”).
+
+Inclua ao menos 15 pacientes.
+
+Registre 20 consultas de diferentes pacientes e diferentes médicos (alguns pacientes realizam mais que uma consulta). As consultas devem ter ocorrido entre 01/01/2015 e 01/01/2022. Ao menos dez consultas devem ter receituário com dois ou mais medicamentos.
+
+Inclua ao menos quatro convênios médicos, associe ao menos cinco pacientes e cinco consultas.
+
+Criar entidade de relacionamento entre médico e especialidade. 
+
+Criar Entidade de Relacionamento entre internação e enfermeiro. 
+
+Arrumar a chave estrangeira do relacionamento entre convênio e médico.
+
+Criar entidade entre internação e enfermeiro.
+
+Colocar chaves estrangeira dentro da internação (Chaves Médico e Paciente).
+
+Registre ao menos sete internações. Pelo menos dois pacientes devem ter se internado mais de uma vez. Ao menos três quartos devem ser cadastrados. As internações devem ter ocorrido entre 01/01/2015 e 01/01/2022.
+
+Considerando que “a princípio o hospital trabalha com apartamentos, quartos duplos e enfermaria”, inclua ao menos esses três tipos com valores diferentes.
+
+Inclua dados de dez profissionais de enfermaria. Associe cada internação a ao menos dois enfermeiros.
+
+Os dados de tipo de quarto, convênio e especialidade são essenciais para a operação do sistema e, portanto, devem ser povoados assim que o sistema for instalado.
+
+
+# Registrando Consultas:
+
+![Consultas](https://user-images.githubusercontent.com/110691979/200942376-3d109011-144f-4175-985b-363f02806702.png)
+
+![Consultas2](https://user-images.githubusercontent.com/110691979/200942403-91d329c7-de3a-4c0f-8dfd-132b908639e7.png)
+
+# Registrando Convenio:
+
+![Convenio](https://user-images.githubusercontent.com/110691979/200942458-4ed1acf6-b42f-4db2-9491-0faf76a436d1.png)
+
+# Registrando medicos e seus tipos:
+
+![Medicos (2)](https://user-images.githubusercontent.com/110691979/200942879-31bd96d2-425c-4c9c-b97e-ba82d55d3791.png)
+
+
+![Medicos (2)](https://user-images.githubusercontent.com/110691979/200942957-5d84d977-e148-4958-b04f-fe28b97ea91b.png)
+
+
+![Especialista](https://user-images.githubusercontent.com/110691979/200942913-fa60f080-380c-43c5-a523-28cdfbedf69e.png)
+
+
+# Registrandon Pacientes:
+
+
+![pacientes](https://user-images.githubusercontent.com/110691979/200943235-0aeddc1e-0feb-4639-9e6e-7ab3c47d55a8.png)
+
+![Pacientes2](https://user-images.githubusercontent.com/110691979/200943262-4d1f3164-32f3-437a-978d-2b9f8488c1ed.png)
+
+
+
+# Registrando Emfermeiras:
+
+![Enfermeira](https://user-images.githubusercontent.com/110691979/200943506-e780c298-dbe6-4ec2-99a1-eb1029b869ad.png)
+
+
+# Registrando Quartos e seus tipos:
+
+
+![quartos](https://user-images.githubusercontent.com/110691979/200943577-c2d16143-6c43-4a6c-8f8d-fabda6c60ab4.png)
+
+![Tipos de quartos](https://user-images.githubusercontent.com/110691979/200943603-576932e2-c8ba-4039-b5f1-67ff7a4df045.png)
+
+# Registrando Internações:
+
+![Internação](https://user-images.githubusercontent.com/110691979/200943807-0d19af4f-ff1d-46bd-858e-0c0abe6fc0e6.png)
+
+
+
+
+
 
 
 
