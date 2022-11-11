@@ -246,7 +246,23 @@ Os dados de tipo de quarto, convênio e especialidade são essenciais para a ope
 
 
 
+# Part 4 :
 
+Pensando no banco que já foi criado para o Projeto do Hospital, realize algumas alterações nas tabelas e nos dados usando comandos de atualização e exclusão:
+
+Crie um script que adicione uma coluna “em_atividade” para os médicos, indicando se ele ainda está atuando no hospital ou não. 
+
+Crie um script para atualizar ao menos dois médicos como inativos e os demais em atividade.
+
+# solução:
+
+![image](https://user-images.githubusercontent.com/110691979/201248093-befb5fc1-a7b6-4436-a8f4-9ddc5d910c7b.png)
+
+![image](https://user-images.githubusercontent.com/110691979/201248164-99e1d8fb-c745-45b0-b9eb-7ef414270eb2.png)
+
+![image](https://user-images.githubusercontent.com/110691979/201248269-a32a6701-2be6-4d9b-81e9-b6c9c9203a2d.png)
+
+![image](https://user-images.githubusercontent.com/110691979/201248292-5de985f3-f7c1-4cfc-b887-df15980cc7d6.png)
 
 
 
