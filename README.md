@@ -268,19 +268,44 @@ Crie um script para atualizar ao menos dois médicos como inativos e os demais e
 
 
 
-Part 4:
+# Part 5:
+
+Mãos a obra
+Crie um script e nele inclua consultas que retornem:
+
+1 - Todos os dados e o valor médio das consultas do ano de 2020 e das que foram feitas sob convênio.
+
+2- Todos os dados das internações que tiveram data de alta maior que a data prevista para a alta.
+
+3- Receituário completo da primeira consulta registrada com receituário associado.
+
+4- Todos os dados da consulta de maior valor e também da de menor valor (ambas as consultas não foram realizadas sob convênio).
+
+5- Todos os dados das internações em seus respectivos quartos, calculando o total da internação a partir do valor de diária do quarto e o número de dias entre a entrada e a alta.
+
+6- Data, procedimento e número de quarto de internações em quartos do tipo “apartamento”.
+
+7- Nome do paciente, data da consulta e especialidade de todas as consultas em que os pacientes eram menores de 18 anos na data da consulta e cuja especialidade não seja “pediatria”, ordenando por data de realização da consulta.
+
+8- Nome do paciente, nome do médico, data da internação e procedimentos das internações realizadas por médicos da especialidade “gastroenterologia”, que tenham acontecido em “enfermaria”.
+
+9- Os nomes dos médicos, seus CRMs e a quantidade de consultas que cada um realizou.
+
+10- Todos os médicos que tenham "Gabriel" no nome. 
+
+11- Os nomes, CREs e número de internações de enfermeiros que participaram de mais de uma internação.
 
 
-
-
-Solução:
+# Solução:
 
 
 -- R1
 select *, avg(valor_cobsulta)from consulta group by ID_Convenio having year(data_consulta) = '2020';
+![Ex1](https://user-images.githubusercontent.com/110691979/201545532-3bc87fe9-a412-49e2-88b1-aca77f4ca1b0.png)
 
 -- R2
 select * from internação where data_alta > data_alt_prev;
+![Ex2](https://user-images.githubusercontent.com/110691979/201545535-0df08c65-270d-467e-a59d-99bfef31e21a.png)
 
 -- R3
 select 
@@ -290,9 +315,11 @@ select
 from consulta c inner join paciente p 
 on c.ID_Paciente  = p.ID_Paciente inner join receita r 
     on p.Id_Receita = r.Id_Receita  limit 1;
+![Ex3](https://user-images.githubusercontent.com/110691979/201545541-1fa3063b-c830-4b8e-98de-cf38b8dbfbb2.png)
 
 -- R4    
 select *, Max(valor_cobsulta), Min(valor_cobsulta) from consulta group by ID_Convenio is null;
+![Ex4](https://user-images.githubusercontent.com/110691979/201545544-decfb146-0599-422e-8637-4d7956fb9e53.png)
 
 -- R5
 select 
@@ -305,10 +332,12 @@ select
  inner join quarto on internação.ID_Quarto = quarto.ID_Quarto 
  inner join tipo_quarto on quarto.ID_TIPOQUARTO = tipo_quarto.ID_TIPOQUARTO 
  group by ID_Internacao;
- 
+ ![Ex5](https://user-images.githubusercontent.com/110691979/201545552-4c07b82d-63b9-4081-a8a9-d01783a92bd8.png)
+
 -- R6 
 Select i.data_entrada, i.procedimento, q.Numero from internação i 
 inner join quarto q on q.ID_Quarto = i.ID_Quarto where ID_TIPOQUARTO = 1;
+![Ex6](https://user-images.githubusercontent.com/110691979/201545557-d3534db6-ccb2-49f4-9098-e75b060ddd4d.png)
 
 -- R7
 select p.nome, c.data_consulta, e.especialidade from consulta c
@@ -318,6 +347,9 @@ select p.nome, c.data_consulta, e.especialidade from consulta c
  YEAR(c.data_consulta) - YEAR(p.data_nascimento) < 19 and 
  YEAR(c.data_consulta) - YEAR(p.data_nascimento) > 0
  order by c.data_consulta;
+ 
+ ![Ex7](https://user-images.githubusercontent.com/110691979/201545563-ef4c3b68-8ce4-4620-b25b-bae0a514dfe9.png)
+
 
 -- R8
 select p.nome, m.Nome, i.data_entrada, i.procedimento, q.ID_TIPOQUARTO from internação i 
@@ -327,19 +359,31 @@ inner join quarto q on q.ID_Quarto = i.ID_Quarto
 where q.ID_TIPOQUARTO = 3
 and m.ID_especialidades = 3;
 
+
+![Ex8](https://user-images.githubusercontent.com/110691979/201545568-47ecac05-660f-4b80-be38-ef2e890cacee.png)
+
 -- R9
 select m.Nome, m.CRM, count(c.ID_Medic) as 'Quantidade de consulta' from medico m 
 inner join consulta c
 on m.ID_Medic = c.ID_Medic
 group by c.ID_Medic;
 
+![Ex9](https://user-images.githubusercontent.com/110691979/201545573-424ab18a-a21b-42a7-86bb-47c8a8d12412.png)
+
+
 -- R10
 select * from medico where nome like "%Gabriel%";
+
+![Ex10](https://user-images.githubusercontent.com/110691979/201545574-05ec9467-12ba-4198-97dc-9ad1d2f912f6.png)
+
 
 -- R11
 select e.nome, e.CRE, count(i.ID_enferm) Numero from enfemeira e
 inner join internação i on e.ID_enferm = i.ID_enferm 
 group by e.ID_enferm having Numero > 1;
+
+![Ex11](https://user-images.githubusercontent.com/110691979/201545579-5552caf1-2284-4751-95a5-6b64584174e8.png)
+
 
     
     
