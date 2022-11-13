@@ -268,6 +268,90 @@ Crie um script para atualizar ao menos dois médicos como inativos e os demais e
 
 
 
+Part 4:
+
+
+
+
+Solução:
+
+
+-- R1
+select *, avg(valor_cobsulta)from consulta group by ID_Convenio having year(data_consulta) = '2020';
+
+-- R2
+select * from internação where data_alta > data_alt_prev;
+
+-- R3
+select 
+	c.*,
+    p.*,
+    r.* 
+from consulta c inner join paciente p 
+on c.ID_Paciente  = p.ID_Paciente inner join receita r 
+    on p.Id_Receita = r.Id_Receita  limit 1;
+
+-- R4    
+select *, Max(valor_cobsulta), Min(valor_cobsulta) from consulta group by ID_Convenio is null;
+
+-- R5
+select 
+	 internação.*,
+	 quarto.*, 
+	 datediff(data_alta, data_entrada) dias_em_uso,
+	 tipo_quarto.valor_diaria, 
+	 datediff(data_alta, data_entrada) * tipo_quarto.valor_diaria valor_total 
+ from internação
+ inner join quarto on internação.ID_Quarto = quarto.ID_Quarto 
+ inner join tipo_quarto on quarto.ID_TIPOQUARTO = tipo_quarto.ID_TIPOQUARTO 
+ group by ID_Internacao;
+ 
+-- R6 
+Select i.data_entrada, i.procedimento, q.Numero from internação i 
+inner join quarto q on q.ID_Quarto = i.ID_Quarto where ID_TIPOQUARTO = 1;
+
+-- R7
+select p.nome, c.data_consulta, e.especialidade from consulta c
+ inner join paciente p on p.ID_Paciente = c.ID_Paciente 
+ inner join especialidades e on e.ID_especialidadeS = c.ID_especialidadeS
+ where c.ID_especialidadeS <> 1 and  
+ YEAR(c.data_consulta) - YEAR(p.data_nascimento) < 19 and 
+ YEAR(c.data_consulta) - YEAR(p.data_nascimento) > 0
+ order by c.data_consulta;
+
+-- R8
+select p.nome, m.Nome, i.data_entrada, i.procedimento, q.ID_TIPOQUARTO from internação i 
+inner join medico m on m.ID_Medic = i.ID_Medic
+inner join paciente p on p.ID_Paciente = i.ID_Paciente
+inner join quarto q on q.ID_Quarto = i.ID_Quarto
+where q.ID_TIPOQUARTO = 3
+and m.ID_especialidades = 3;
+
+-- R9
+select m.Nome, m.CRM, count(c.ID_Medic) as 'Quantidade de consulta' from medico m 
+inner join consulta c
+on m.ID_Medic = c.ID_Medic
+group by c.ID_Medic;
+
+-- R10
+select * from medico where nome like "%Gabriel%";
+
+-- R11
+select e.nome, e.CRE, count(i.ID_enferm) Numero from enfemeira e
+inner join internação i on e.ID_enferm = i.ID_enferm 
+group by e.ID_enferm having Numero > 1;
+
+    
+    
+    
+    
+    
+
+
+
+
+
+
 
 
 
